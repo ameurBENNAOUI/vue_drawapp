@@ -1,18 +1,23 @@
 <template>
-  <div class="home">
+  <!-- <div class="home"> -->
     <!-- <img alt="Vue logo" src="../assets/logo.png" /> -->
-    <Ttt  />
-  </div>
+
+        <ImageCropper src="/logo.png"  />
+
+
+    
+  <!-- </div> -->
 </template>
 
 <script>
 // @ is an alias to /src
-import Ttt from "@/components/img_.vue";
+import ImageCropper from "@/components/img_.vue";
 
 export default {
   name: "Home",
   components: {
-    Ttt
+    ImageCropper
   }
 };
 </script>
+

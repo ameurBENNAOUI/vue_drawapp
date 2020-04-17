@@ -4,6 +4,7 @@ import router from "./router";
 import store from "./store";
 
 Vue.config.productionTip = false;
+// Vue.http.headers.common['Access-Control-Allow-Origin'] = '*'
 
 new Vue({
   router,
