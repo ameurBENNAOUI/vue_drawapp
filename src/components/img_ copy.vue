@@ -41,10 +41,7 @@
                           <span class="fa fa-search-minus"></span>
                         </span>
                       </button>
-                      <div class="radio">
-                              <label><input type="radio" name="optradio" id="0 degree" checked="" v-on:change="check_status = 0">0 degree</label>
-                              <label><input type="radio" name="optradio" id="90 degree" v-on:change="check_status = 90">90 degree</label>
-                            </div>
+                      
                     </div>
             
                     </div>

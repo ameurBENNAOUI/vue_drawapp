@@ -35,6 +35,10 @@
                     </div>
                     <div class="modal-body">
                         <ImageCropper ref="foo" :src=img_src />
+                        <div class="radio">
+                              <label><input type="radio" name="optradio" id="0 degree" checked="" v-on:change="check_status = 0">0 degree</label>
+                              <label><input type="radio" name="optradio" id="90 degree" v-on:change="check_status = 90">90 degree</label>
+                            </div>
                     </div>
                     
                     <div class="modal-footer">
@@ -73,7 +77,8 @@ export default {
     return{
         
       json_data:{},
-      img_src:{}
+      img_src:{},
+      check_status=0
       
     }},
     mounted() {
@@ -96,7 +101,7 @@ export default {
 
         get_data:function(){
             var coordination=this.$refs.foo.getData();
-            var rotate=this.$refs.foo.$data.check_status;
+            var rotate=this.check_status;
             var src =this.$refs.foo.src;
             var name=src.substring(src.lastIndexOf("/") + 1, src.length);
             var img_id;
