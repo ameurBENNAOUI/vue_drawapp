@@ -117,6 +117,11 @@ export default {
   src: String 
   },
   methods:{
+    setData:function(data){
+      var cropper=this.cropper
+      return cropper.setData(data)
+    },
+
     getData:function(){
       var cropper=this.cropper
       return cropper.getData()

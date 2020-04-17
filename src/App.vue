@@ -1,16 +1,17 @@
 <template>
-    <ImageCropper src="/logo.png" />
+    <multi />
 </template>
 
 <script>
 // import ImageCropper from "@/components/img_copy";
-import ImageCropper from './components/img_ copy'
+import multi from './components/edit_template'
 
 export default {
     name:"App",
     components:
     {
-        ImageCropper
+        multi
     }
+    
 }
 </script>
