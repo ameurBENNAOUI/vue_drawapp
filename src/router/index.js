@@ -17,16 +17,34 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue")
+      import(/* webpackChunkName: "about" */ "../views/upload_template.vue")
   },  
   {
-    path: "/",
-    name: "Template",
+    path: "/upload_template",
+    name: "upload template",
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/tmp.vue")
+      import(/* webpackChunkName: "about" */ "../views/upload_template.vue")
+  },
+  {
+    path: "/view_template",
+    name: "view_template",
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/view_tmp.vue")
+  },
+  {
+    path: "/edit_template/2",
+    name: "edit_template",
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/edit_tmp.vue")
   }
 ];
 

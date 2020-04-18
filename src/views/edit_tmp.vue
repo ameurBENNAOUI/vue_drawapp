@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import muti from "@/components/view_template";
+import muti from "../components/edit_template"
 export default {
     name:"App",
     components:

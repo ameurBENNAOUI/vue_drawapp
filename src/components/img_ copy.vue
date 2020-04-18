@@ -152,24 +152,24 @@ export default {
       this.cropper=new Cropper(this.image,{
         // zoomable:false,
         // scalable:false,
-        aspectRation:1,
-        crop(e) {
-          document.getElementById("dataX").value = e.detail.x;
-		  		document.getElementById("dataY").value = e.detail.y;
-		  		document.getElementById("dataWidth").value = e.detail.width;
-			  	document.getElementById("dataHeight").value = e.detail.height;
-          document.getElementById("dataRotate").value = e.detail.rotate;
-          document.getElementById("dataScaleX").value = e.detail.scaleX;
-          document.getElementById("dataScaleY").value = e.detail.scaleY;
-          var canavas=cropper.getCroppedCanvas({height:200}).toDataURL('image/png')
-          // this.destination=canavas.toDataURL('image/png')
-          document.getElementById('img_small').setAttribute("src",canavas)
-        },
+        aspectRation:1
+        // crop(e) {
+        //   document.getElementById("dataX").value = e.detail.x;
+		  	// 	document.getElementById("dataY").value = e.detail.y;
+		  	// 	document.getElementById("dataWidth").value = e.detail.width;
+			  // 	document.getElementById("dataHeight").value = e.detail.height;
+        //   document.getElementById("dataRotate").value = e.detail.rotate;
+        //   document.getElementById("dataScaleX").value = e.detail.scaleX;
+        //   document.getElementById("dataScaleY").value = e.detail.scaleY;
+        //   var canavas=cropper.getCroppedCanvas({height:200}).toDataURL('image/png')
+        //   // this.destination=canavas.toDataURL('image/png')
+        //   document.getElementById('img_small').setAttribute("src",canavas)
+        // },
       });
       var cropper=this.cropper
 
 
-      cropper.getCropBoxData()
+      // cropper.getCropBoxData()
 
   		document.getElementById('zoom_button').addEventListener('click', function(){
       cropper.zoom(0.1);
@@ -186,50 +186,50 @@ export default {
 			cropper.setDragMode("crop")
 			})
 			
-			document.getElementById('move_left').addEventListener('click', function(){
-			cropper.move(10,0)
-			})
-			document.getElementById('move_right').addEventListener('click', function(){
-			cropper.move(10,0)
-			})
+			// document.getElementById('move_left').addEventListener('click', function(){
+			// cropper.move(10,0)
+			// })
+			// document.getElementById('move_right').addEventListener('click', function(){
+			// cropper.move(10,0)
+			// })
 			
-			document.getElementById('move_up').addEventListener('click', function(){
-			cropper.move(0,-10)
-			})
-			document.getElementById('move_down').addEventListener('click', function(){
-			cropper.move(0,10)
+			// document.getElementById('move_up').addEventListener('click', function(){
+			// cropper.move(0,-10)
+			// })
+			// document.getElementById('move_down').addEventListener('click', function(){
+			// cropper.move(0,10)
 			
-			})
-			
-			
-			document.getElementById('rotat_plus').addEventListener('click', function(){
-			cropper.rotate(90)
-			})
+			// })
 			
 			
-			document.getElementById('rotat_moin').addEventListener('click', function(){
-			cropper.rotate(-90)
-			})
-			
-			document.getElementById('scale_x').addEventListener('click', function(){
-			console.log(document.getElementById("dataScaleX").value)
-			if (document.getElementById("dataScaleX").value == -1) {
-				cropper.scaleX(1)
-			} else {
-				cropper.scaleX(-1)
-			}
+			// document.getElementById('rotat_plus').addEventListener('click', function(){
+			// cropper.rotate(90)
+			// })
 			
 			
-			})
-			document.getElementById('scale_y').addEventListener('click', function(){
-			console.log(document.getElementById("dataScaleY").value)
-			if (document.getElementById("dataScaleY").value  == -1) {
-				cropper.scaleY(1)
-			} else {
-				cropper.scaleY(-1)
-			}
+			// document.getElementById('rotat_moin').addEventListener('click', function(){
+			// cropper.rotate(-90)
+			// })
 			
-			})
+			// document.getElementById('scale_x').addEventListener('click', function(){
+			// console.log(document.getElementById("dataScaleX").value)
+			// if (document.getElementById("dataScaleX").value == -1) {
+			// 	cropper.scaleX(1)
+			// } else {
+			// 	cropper.scaleX(-1)
+			// }
+			
+			
+			// })
+			// document.getElementById('scale_y').addEventListener('click', function(){
+			// console.log(document.getElementById("dataScaleY").value)
+			// if (document.getElementById("dataScaleY").value  == -1) {
+			// 	cropper.scaleY(1)
+			// } else {
+			// 	cropper.scaleY(-1)
+			// }
+			
+			// })
 			
 			
 	    }

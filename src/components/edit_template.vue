@@ -91,14 +91,14 @@ export default {
         // let urlParams = new URLSearchParams(window.location.search);
         // let myParam = urlParams.get('visible');
         this.a=window.location.href
-        var name=this.a.substring(this.a.lastIndexOf("/") + 1, this.a.length);
-        this.a=name
+        var id=this.a.substring(this.a.lastIndexOf("/") + 1, this.a.length);
+        this.a=id
     
-        axios.get('http://localhost:8080/template/'+name)
+        axios.get('http://localhost:8080/template/'+id)
         .then((response) => {
         console.log(response);
         this.data=response.data;
-        this.img_src='http://localhost:8080/static/croped_img_200/'+response.data.name;
+        this.img_src='http://localhost:8080/static/template_cropped_img_200/'+response.data.template_path;
         }, (error) => {
         console.log(error);
         });

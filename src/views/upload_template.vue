@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import muti from "./components/drag_upload";
+import muti from "@/components/drag_upload";
 export default {
     name:"App",
     components:
