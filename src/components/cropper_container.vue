@@ -1,11 +1,10 @@
 <template>
 
-    <div  class="container">
-      <div class="row">
+
         <div class="col">
                       <!-- <h3>Demo:</h3> -->
               <div class="img-container">
-                      <img  ref="image" id="bl" src="/logo.png" >
+                      <img  ref="image" id="bl" :src="src" >
 
               </div>
               <div class="tools">
@@ -15,8 +14,7 @@
                 <button class="btn" v-on:click="crop"><i class="fa fa-crop"></i></button>
               </div>
         </div>
-        </div>
-      </div>
+
 
 </template>
 
@@ -104,7 +102,7 @@ export default {
 </script>
 
 
-<style scoped>
+<style >
 .img-container{
   width: 640px;
   height: 480px;

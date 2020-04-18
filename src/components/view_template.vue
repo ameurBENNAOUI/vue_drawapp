@@ -212,7 +212,7 @@ export default {
              return "table-danger"
          },
          gotosite:function(producturl){
-            window.location.href ="/edit/"+ producturl
+            window.location.href ="/edit_template/"+ producturl
          },
 
         get_data:function(){

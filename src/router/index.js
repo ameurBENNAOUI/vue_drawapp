@@ -38,13 +38,13 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/view_tmp.vue")
   },
   {
-    path: "/edit_template/2",
+    path: "/edit_template/:id",
     name: "edit_template",
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ "../components/cropper_container.vue")
+      import(/* webpackChunkName: "about" */ "../views/edit_tmp.vue")
   }
 ];
 
