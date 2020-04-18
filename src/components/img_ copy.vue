@@ -152,8 +152,8 @@ export default {
       this.cropper=new Cropper(this.image,{
         // zoomable:false,
         // scalable:false,
-        aspectRation:1
-        // crop(e) {
+        aspectRation:1,
+        crop(e) {
         //   document.getElementById("dataX").value = e.detail.x;
 		  	// 	document.getElementById("dataY").value = e.detail.y;
 		  	// 	document.getElementById("dataWidth").value = e.detail.width;
@@ -161,10 +161,10 @@ export default {
         //   document.getElementById("dataRotate").value = e.detail.rotate;
         //   document.getElementById("dataScaleX").value = e.detail.scaleX;
         //   document.getElementById("dataScaleY").value = e.detail.scaleY;
-        //   var canavas=cropper.getCroppedCanvas({height:200}).toDataURL('image/png')
-        //   // this.destination=canavas.toDataURL('image/png')
-        //   document.getElementById('img_small').setAttribute("src",canavas)
-        // },
+          var canavas=cropper.getCroppedCanvas({height:200}).toDataURL('image/png')
+          this.destination=canavas.toDataURL('image/png')
+          // document.getElementById('img_small').setAttribute("src",canavas)
+        },
       });
       var cropper=this.cropper
 

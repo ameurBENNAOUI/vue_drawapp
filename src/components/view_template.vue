@@ -44,22 +44,28 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                        <h5 class="modal-title" id="exampleModalLongTitle">Edit cropped image</h5>
+                        <div id="spin_parent" class="" role="status">
+                          <span id="spin_child" class=""></span>
+                        </div>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <ImageCropper ref="foo" :src=img_src />
+                        <ImageCropper ref="foo"   :src=img_src />
                         <div class="radio">
                               <label><input type="radio" name="optradio" id="0 degree" checked="" v-on:change="check_status = 0">0 degree</label>
                               <label><input type="radio" name="optradio" id="90 degree" v-on:change="check_status = 90">90 degree</label>
                             </div>
                     </div>
+                    <div class="zoom-window">
+                      <img src="" id="img_small" alt="">
+                    </div>
                     
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" v-on:click="get_data">Save changes</button>
+                        <button type="button" id="close" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" id="save1" class="btn btn-primary" v-on:click="get_data">Save changes</button>
                     </div>
                     </div>
                 </div>
@@ -95,16 +101,23 @@ import bootbox from 'bootbox'
 
 // import Vue from "vue";
 
-import ImageCropper from './img_ copy'
+import ImageCropper from './cropper_container.vue'
 import $ from "jquery"
 export default {
     name:"multi",
+    watch:{
+    destination:function(){
+        
+    }}
+    ,
     data(){
     return{
         
       json_data:{},
       img_src:{},
-      check_status:0
+      destination:{},
+      check_status:0,
+      msg:{}
       
     }},
     mounted() {
@@ -121,6 +134,11 @@ export default {
         ImageCropper
     },
      methods: {
+       updateCart:function(e){
+          console.log(e)
+          this.msg = e;
+      alert("hello child" + e)
+       },
          Delete:function(id){
 
           bootbox.confirm({
@@ -214,6 +232,17 @@ export default {
             var res = name.split(".")[0];
             console.log("vvvvvvvvv",res);
             coordination.rotate=rotate;
+
+document.getElementById("save1").value = '';
+            document.getElementById("spin_parent").setAttribute("class","spinner-border text-secondary");
+            document.getElementById("spin_child").setAttribute("class","sr-only");
+
+          document.getElementById("save1").disabled = true;
+          document.getElementById("close").disabled = true;
+          document.getElementById("save1").innerHTML=""
+          
+          // document.getElementById("close").value = '';
+
             var obj={
                 "id":img_id,
                 "name": name,
@@ -388,5 +417,39 @@ td img{
   .modal1-content1 {
     width: 100%;
   }
+}
+.modal-dialog {
+    max-width: 966px;
+    margin: 1.75rem auto;
+}
+.zoom-window{
+    width: 250px;
+    height: 200px;
+    /* border: 1px solid #333; */
+    right: 25px;
+    position: absolute;
+    bottom: 118px;
+}
+.zoom-window img{
+  vertical-align: middle;
+    border-style: none;
+    max-width: 250px;
+    max-height: 200px;
+    min-width: 250px;
+    min-height: 200px;
+}
+.modal-content{
+  background-color: #ecf0f1;
+}
+.spinner-border{
+
+      position: absolute;
+    bottom: 18px;
+    right: 60px;
+}
+
+#save1{
+    min-width: 130px;
+    min-height: 36px;
 }
 </style>
