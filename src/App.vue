@@ -28,6 +28,12 @@
 
 </template>
 
+<style  scoped>
+  nav{
+    margin-bottom: 15px;
+  }
+</style>
+
 <script>
 // import "font-awesome/css/font-awesome.css"
 

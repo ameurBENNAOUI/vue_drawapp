@@ -141,6 +141,7 @@ export default {
   margin-bottom: 20px;
   border: 1px solid #ecf0f1;
   border-radius: 4px;
+  outline: none;
 }
 .get-info-container div{
   width: 250px;
@@ -163,6 +164,7 @@ export default {
   border: 1px solid #ecf0f1;
   border-radius: 4px;
   position: relative;
+  
 }
 .extract-green:hover{
   background-color: #27ae60;
@@ -171,11 +173,17 @@ export default {
   -o-transition: background-color .5s ease-out;
   transition: background-color .5s ease-out;
 }
-.extract-green .icon {
+.extract-green:focus,
+.extract-white:focus{
+  outline: none;
+}
+
+
+
+.extract-green .icon ,
+.extract-green  .view  {
     position: absolute;
     font-size: 32px;
-    top: -8px;
-    right: 3px;
     color: #fff;
     background: none;
     border: none;
@@ -183,19 +191,41 @@ export default {
 
 
 }
-.extract-green .icon i{
+.extract-green .icon{
+    top: -8px;
+    right: 3px;
+}
+.extract-green  .view{
+    top: -9px;
+    right: 29px;
+}
+
+.extract-green .icon i ,.extract-green  .view i {
       -webkit-text-fill-color: white;
     -webkit-text-stroke-width: 0.7px;
     -webkit-text-stroke-color: black;
+    font-size: 23px;
 }
-.extract-green .icon:hover i{
+.extract-green .icon:hover i ,.extract-green  .view:hover i{
      -webkit-text-fill-color: red;
+    -webkit-text-stroke-width: 0.7px;
+    -webkit-text-stroke-color: black;
+ 
+}
+.extract-green  .view:hover i{
+     -webkit-text-fill-color: #f1c40f;
     -webkit-text-stroke-width: 0.7px;
     -webkit-text-stroke-color: black;
  
 }
 .save-change{
   margin-top: 20px;
+  background-color: #3498db;
+  color:#fff
 }
+.save-change:hover{
+  background-color: #2980b9;
+}
+
 
 </style>

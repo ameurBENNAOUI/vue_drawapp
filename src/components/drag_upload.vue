@@ -1,31 +1,51 @@
 <template>
   <div class="example-drag">
     <div class="upload">
-      <ul v-if="files.length">
+      <div v-if="files.length" class="container">
         <!-- <li v-for="(file, index) in files" :key="file.id"> -->
-            <li v-for="(file) in files" :key="file.id">
-          <span>{{file.name}}</span> -
-          <span>{{file.size | formatSize}}</span> -
-          <span v-if="file.error">{{file.error}}</span>
-          <span v-else-if="file.success">success</span>
-          <span v-else-if="file.active">active</span>
-          <span v-else></span>
-        </li>
-      </ul>
-      <ul v-else>
-        <td colspan="7">
+          <table class="table table-bordered text-center " >
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">name</th>
+                <th scope="col">status</th>
+              </tr>
+            </thead>
+            <tbody>
+
+
+              <tr v-for="(file,index) in files" :key="file.id" class="text-center">
+                <th scope="row">{{index+1}}</th>
+                <td>{{file.name}}</td>
+                <td v-if="file.error" ><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>{{file.error}}</td>
+                <td v-else-if="file.success" >Success<i class="fa fa-check" aria-hidden="true"></i></td>
+                <td v-else-if="file.active" >
+                  
+                  <div class="spinner-border text-primary" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                </td>
+                <td v-else></td>
+              </tr>
+
+            </tbody>
+          </table>
+        
+      </div>
+      <div v-else>
+        <td colspan="7" class="drop-field">
           <div class="text-center p-5">
             <h4>Drop files anywhere to upload<br/>or</h4>
             <label for="file" class="btn btn-lg btn-primary">Select Files</label>
           </div>
         </td>
-      </ul>
+      </div>
 
       <div v-show="$refs.upload && $refs.upload.dropActive" class="drop-active">
     		<h3>Drop files to upload</h3>
       </div>
 
-      <div class="example-btn">
+      <div class="example-btn text-center">
         <file-upload
           class="btn btn-primary"
           post-action="http://localhost:8080/uploadfile/"
@@ -48,9 +68,7 @@
       </div>
     </div>
 
-    <div class="pt-5">
-      Source code: <a href="https://github.com/lian-yue/vue-upload-component/blob/master/docs/views/examples/Drag.vue">/docs/views/examples/Drag.vue</a>
-    </div>
+
   </div>
 </template>
 <style>
@@ -81,6 +99,25 @@
   font-size: 40px;
   color: #fff;
   padding: 0;
+}
+.drop-field{
+    display: table;
+    margin: 0 auto 15px;
+    border: 1px solid #333;
+    padding: 25px 125px;
+    margin-top: 30px;
+}
+.file-uploads{
+  margin-right: 10px;
+}
+.fa-exclamation-triangle{
+  color: #f1c40f;
+  font-size: 16px;
+  margin-right: 5px;
+}
+.fa-check{
+  color: #2ecc71;
+  margin-right: 5px;
 }
 </style>
 
