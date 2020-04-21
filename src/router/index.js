@@ -1,6 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 // import Home from "../views/Home.vue";
+// import axios from 'axios/dist/axios.min.js'
+
 
 Vue.use(VueRouter);
 
@@ -26,7 +28,10 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/upload_template.vue")
+      import(/* webpackChunkName: "about" */ "../views/upload_template.vue"),
+    meta: {
+        requiresAuth: true,
+      }
   },
   {
     path: "/view_template",
@@ -35,8 +40,12 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/view_tmp.vue")
+      import(/* webpackChunkName: "about" */ "../views/view_tmp.vue"),
+      meta: {
+        requiresAuth: true,
+        }
   },
+  
   {
     path: "/edit_template/:id",
     name: "edit_template",
@@ -44,7 +53,37 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/edit_tmp.vue")
+      import(/* webpackChunkName: "about" */ "../views/edit_tmp.vue"),
+      meta: {
+        requiresAuth: true,
+        }
+  },
+  {
+    path: "/login",
+    name: "login",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/login.vue"),
+    meta: {
+      requiresVisitor: true,
+      }
+
+  },
+  {
+    path: "/regester",
+    name: "regester",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../components/auth/Register.vue"),
+    meta: {
+      requiresVisitor: true,
+      }
+
+  },
+  {
+    path: "/logout",
+    name: "logout",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../components/auth/Logout")
+
   }
 ];
 

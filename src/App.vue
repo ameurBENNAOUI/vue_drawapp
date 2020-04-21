@@ -17,7 +17,10 @@
             <router-link  class="nav-item nav-link" to='/upload_template'>Upload Templates</router-link >
             <router-link  class="nav-item nav-link" to='/view_template'>View Templates</router-link >
             <router-link  class="nav-item nav-link disabled" to='/about'>About</router-link >
-            <router-link  class="nav-item nav-link disabled" to='/edit_template/2'>Edit</router-link >
+
+            <router-link v-if="!loggedIn" :to="{name:'login'}"  class="nav-item nav-link" >Login</router-link >
+            <router-link v-if="!loggedIn" :to="{name:'regester'}"  class="nav-item nav-link">Regester</router-link >
+            <router-link v-if="loggedIn" :to="{name:'logout'}"  class="nav-item nav-link" >Logout</router-link >
             </div>
         </div>
         </nav>
@@ -28,15 +31,21 @@
 
 </template>
 
-<style  scoped>
-  nav{
-    margin-bottom: 15px;
-  }
-</style>
-
 <script>
 // import "font-awesome/css/font-awesome.css"
 
 export default {
+  computed:{
+    loggedIn(){
+      return this.$store.getters.loggedIn
+    }
+  }
 }
 </script>
+
+<style>
+.nav-item nav-link disabled
+{
+  margin-right: 680px;
+}
+</style>
