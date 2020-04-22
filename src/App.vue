@@ -17,7 +17,7 @@
             <router-link v-if="loggedIn"  class="nav-item nav-link" to='/upload_template'>Upload Templates</router-link >
             <router-link v-if="loggedIn"  class="nav-item nav-link" to='/view_template'>View Templates</router-link >
             <router-link  class="nav-item nav-link disabled" to='/about'>About</router-link >
-            <router-link   class="nav-item nav-link" to='/upload_pdf_queue'>upload pdf queue</router-link >
+            <router-link   class="nav-item nav-link" to='upload_pdf_queue?name=default'>upload pdf queue</router-link >
             <router-link   class="nav-item nav-link" to='/view_pdf_queue'>view pdf queue</router-link >
 
 

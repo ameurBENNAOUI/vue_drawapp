@@ -3,8 +3,8 @@
 
         <div class="form-group">
         <label for="sel1">Select Queue:</label>
-        <select @change="active_ul()" class="form-control" id="sel1">
-            <option v-for="item in data_queue" :key="item.message">
+        <select @change="active_ul()"  class="form-control" id="sel1">
+            <option v-for="item in data_queue" :key="item.message"  selected>
                 {{item.name}}
             </option>
             
@@ -25,7 +25,6 @@ import muti from "@/components/drag_upload";
 import 'bootstrap/dist/js/bootstrap.js'
 import axios from 'axios/dist/axios.min.js'
 
-
 import bootbox from 'bootbox'
 
 export default {
@@ -36,7 +35,8 @@ export default {
     },
     data(){
         return{
-            data_queue:{}
+            data_queue:{},
+            list_value:"mabrouk"
         }
     },
     methods:{
@@ -83,23 +83,29 @@ export default {
             
                     
     }},
-    beforeCreate(){
-        
-        var self= this
+    updated: function() {
+        // var self=this
+    
+    document.getElementById("sel1").value=this.$route.query.name
+     if (this.$route.query.name){
+
+            document.getElementById("sel1").value=this.$route.query.name
+        }
+},
+ 
+    mounted(){
+           var self= this
         axios.get('http://localhost:8080/queue/1').then(function (response) {
         // console.log(response);
         // location.reload();
                 self.data_queue=response.data.Queues
-                console.log(response.data.Queues)
-
-
-                document.getElementById("sel1").value="yyy"
-            
+        //         console.log(response.data.Queues)
+        //         ="2"
+        // console.log(document.getElementById("sel1").value)
     
             })
-    },
-    mounted(){
-        document.getElementById("sel1").value="yyy"
+            // this.$refs.ff.queue_id=(document.getElementById("sel1").value).length
+        
         
         // var self= this
 
