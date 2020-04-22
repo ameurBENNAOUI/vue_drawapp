@@ -84,6 +84,19 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../components/auth/Logout")
 
+  },
+  {
+    path: "/upload_pdf_queue",
+    name: "upload_pdf_queue",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/upload_pdf_queue")
+
+  },  {
+    path: "/view_pdf_queue",
+    name: "view_pdf_queue",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/view_pdf_queue")
+
   }
 ];
 

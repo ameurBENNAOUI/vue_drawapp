@@ -48,15 +48,17 @@
       <div class="example-btn text-center">
         <file-upload
           class="btn btn-primary"
-          post-action="http://localhost:8080/uploadfile/"
+          post-action="http://localhost:8080/upload_queue_file/"
           :multiple="true"
           :drop="true"
           :drop-directory="true"
           v-model="files"
+          :data="{queue_id: queue_id}"
           ref="upload">
           <i class="fa fa-plus"></i>
           Select files
         </file-upload>
+        
         <button type="button" class="btn btn-success" v-if="!$refs.upload || !$refs.upload.active" @click.prevent="$refs.upload.active = true">
           <i class="fa fa-arrow-up" aria-hidden="true"></i>
           Start Upload
@@ -65,6 +67,7 @@
           <i class="fa fa-stop" aria-hidden="true"></i>
           Stop Upload
         </button>
+        
       </div>
     </div>
 
@@ -131,6 +134,12 @@ export default {
   data() {
     return {
       files: [],
+      queue_id:null
+    }
+  },
+  methods:{
+    get_queue_id:function(){
+        // this.$refs.upload.post-action=="https://www.w3schools.com/bootstrap/bootstrap_forms_inputs.asp"
     }
   }
 }

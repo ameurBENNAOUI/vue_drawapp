@@ -14,9 +14,13 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
             <router-link  class="nav-item nav-link active" to='/'>Home <span class="sr-only">(current)</span></router-link >
-            <router-link  class="nav-item nav-link" to='/upload_template'>Upload Templates</router-link >
-            <router-link  class="nav-item nav-link" to='/view_template'>View Templates</router-link >
+            <router-link v-if="loggedIn"  class="nav-item nav-link" to='/upload_template'>Upload Templates</router-link >
+            <router-link v-if="loggedIn"  class="nav-item nav-link" to='/view_template'>View Templates</router-link >
             <router-link  class="nav-item nav-link disabled" to='/about'>About</router-link >
+            <router-link   class="nav-item nav-link" to='/upload_pdf_queue'>upload pdf queue</router-link >
+            <router-link   class="nav-item nav-link" to='/view_pdf_queue'>view pdf queue</router-link >
+
+
 
             <router-link v-if="!loggedIn" :to="{name:'login'}"  class="nav-item nav-link" >Login</router-link >
             <router-link v-if="!loggedIn" :to="{name:'regester'}"  class="nav-item nav-link">Regester</router-link >
@@ -44,8 +48,8 @@ export default {
 </script>
 
 <style>
-.nav-item nav-link disabled
-{
-  margin-right: 680px;
+
+nav{
+  margin-bottom: 30px;
 }
 </style>
