@@ -20,6 +20,7 @@
     "image-compressor": "^2.0.3",
     "jquery": "^3.5.0",
     "popper.js": "^1.14.3",
+    "stringinject": "^2.1.1",
     "vee-validate": "^3.3.0",
     "vue": "^2.6.11",
     "vue-cropperjs": "^4.0.1",

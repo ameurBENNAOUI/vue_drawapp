@@ -13,7 +13,9 @@
         <th scope="col">url</th>
         <th scope="col">queue name</th>
         <th scope="col">status</th>
+        <th scope="col">score</th>
         <th scope="col">data extracted</th>
+        <th scope="col">feedback</th>
         <th scope="col">Delete</th>
 
       </tr>
@@ -26,14 +28,15 @@
 
         <td>{{item.queue_name}}</td>
         <td>{{item.status}}</td>
-        <td><button type="button" class="btn btn-light"  v-on:click="gotosite(item.id)">View</button></td>
+        <td>{{item.score}}</td>
+        <td><button type="button" class="btn btn-light"  v-on:click="gotosite(item)">View</button></td>
 
-          <div :id="item.id" >
+          <!-- <div :id="item.id" >
               <div>{{item.extracted_data}}</div>
                 <img :src="'http://localhost:8080/static/queues_pdf_cropped/'+toImg(item.url)" alt="">
-            </div>
+            </div> -->
 
-
+        <td>{{item.feedback_user}}</td>
         <td><button type="button" class="btn btn-danger" v-on:click="Delete(item.id)">Delete</button></td>
 
 
@@ -50,6 +53,8 @@
 <script>
 import axios from 'axios/dist/axios.min.js'
 
+import stringInject from 'stringinject'
+
 import 'bootstrap/dist/js/bootstrap.js'
 
 import bootbox from 'bootbox'
@@ -63,7 +68,7 @@ export default {
         Delete:function(id){
 
           bootbox.confirm({
-                message: '<img src="smiley.gif" alt="Smiley face" height="42" width="42">',
+                message: '<img src="/logo.png" alt="/logo.png" height="42" width="42">',
                 buttons: {
                     confirm: {
                         label: 'Yes',
@@ -102,7 +107,7 @@ export default {
             var self=this
             var el
             self.json_data.forEach(element => {
-                if (element.id==item){
+                if (element.id==item.id){
                     el=element.extracted_data
                     
                     return;
@@ -112,36 +117,74 @@ export default {
                     el="No extracted data"
                 }
 
-            
+            var e=(item.url).replace(".pdf", ".jpg") 
+            console.log(e)
+
+            // toimg= url.replace(".pdf", ".jpg");
             // var a=document.getElementById(item).innerHTML
             // var b="fff"
+            var str = stringInject('<p>{element}</p><br><img src="http://localhost:8080/static/queues_pdf_cropped/{name}" alt="/logo.png" height="42" width="42">', { element: el, name: e});
+            var put_url=stringInject('http://localhost:8080/ProccessQueue/1/{queue_id}/{pdf_id}',{ queue_id: item.queue_id, pdf_id: item.id})
             bootbox.dialog({
-            title: 'A custom dialog with buttons and callbacks',
-            message: el,
+            title: "str",
+            message: str,
             size: 'large',
             buttons: {
                 cancel: {
-                    label: "I'm a cancel button!",
+                    label: "Close",
                     className: 'btn-danger',
                     callback: function(){
                         console.log('Custom cancel clicked');
                     }
                 },
-                noclose: {
+                noaclose: {
                     label: "Bad",
                     className: 'btn-warning',
                     callback: function(){
-                        console.log('Custom button clicked');
-                        return false;
+                        axios.put(put_url,{"feedback": "Bad"})
+                        .then((response) => {
+                        console.log(response);
+                        location.reload();
+                        // return false
+                        // self.json_data=response.data.Queues;
+                        }, (error) => {
+                        console.log(error);
+                        });
+                        // console.log('Custom button clicked');
+                        // return false;
+                    }
+                },
+                oka: {
+                    label: "Meduim",
+                    className: 'btn-success',
+                    callback: function(){
+                        axios.put(put_url,{"feedback": "Meduim"})
+                        .then((response) => {
+                        console.log(response);
+                        location.reload();
+                        // return false
+                        // self.json_data=response.data.Queues;
+                        }, (error) => {
+                        console.log(error);
+                        });
                     }
                 },
                 ok: {
                     label: "Good",
                     className: 'btn-info',
                     callback: function(){
-                        console.log('Custom OK clicked');
+                        axios.put(put_url,{"feedback": "Good"})
+                        .then((response) => {
+                        console.log(response);
+                        location.reload();
+                        // return false
+                        // self.json_data=response.data.Queues;
+                        }, (error) => {
+                        console.log(error);
+                        });
                     }
-                }
+                },
+                
             }
         });
             // bootbox.alert(a);
