@@ -33,4 +33,14 @@ export default {
 
 </script>
 
-
+<style  scoped>
+/* .btn {
+  background-color: DodgerBlue; 
+  border: none; 
+  color: white; 
+  padding: 12px 16px; 
+  font-size: 16px; 
+  cursor: pointer; 
+  border-radius: 0;
+} */
+</style>

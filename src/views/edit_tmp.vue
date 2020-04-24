@@ -17,7 +17,7 @@
                    <div class="zoom-window">
                        <img src="" id="img_small" alt="">
                    </div>
-                    <button type="button" class="extract-green save-change" >Submit!</button>
+                    <button type="button" v-on:click="submit()" class="extract-green save-change" >Submit!</button>
               </div>
         </div>
 
@@ -70,6 +70,22 @@ export default {
         }
     },
     methods:{
+        submit(){
+            console.log("123")
+            this.data.label_json=this.extractcted_data;
+            this.data.label_status=true
+
+            var header={
+                headers: { 'Content-Type': 'application/json' }
+              }
+            axios.put('http://localhost:8080/template/1/'+this.data.id,this.data,header).then(function (response) {
+                console.log(response);
+                window.location.href ="/view_template";
+                
+            })
+
+
+        },
         view_data(se){
             this.$refs.foo.setData(this.extractcted_data[se])
             // btn.disabled=false
