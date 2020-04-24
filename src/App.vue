@@ -1,10 +1,8 @@
 <template>
   <div id="app">
-    <!-- <nav>
-        <router-link to='/'>Home</router-link>
-        <router-link to='/register'>Register</router-link>
-        <router-link to='/login'>Login</router-link>
-    </nav> -->
+
+
+
 
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Draw App</a>
@@ -14,15 +12,33 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
             <router-link  class="nav-item nav-link active" to='/'>Home <span class="sr-only">(current)</span></router-link >
-            <router-link v-if="loggedIn"  class="nav-item nav-link" to='/upload_template'>Upload Templates</router-link >
-            <router-link v-if="loggedIn"  class="nav-item nav-link" to='/view_template'>View Templates</router-link >
+            <li v-if="loggedIn" class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Templates
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <router-link  class="dropdown-item" to='/upload_template'>Upload Templates</router-link >
+                <router-link class="dropdown-item" to='/view_template'>View Templates</router-link >
+              </div>
+           </li>
+
+           <li v-if="loggedIn" class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Outputs
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <router-link  class="dropdown-item" to='upload_pdf_queue?name=default'>upload pdf queue</router-link >
+                <router-link class="dropdown-item" to='/view_pdf_queue'>view pdf queue</router-link >
+              </div>
+           </li>
+            <!-- <router-link v-if="loggedIn"  class="nav-item nav-link" to='/upload_template'>Upload Templates</router-link >
+            <router-link v-if="loggedIn"  class="nav-item nav-link" to='/view_template'>View Templates</router-link > -->
             <router-link  class="nav-item nav-link disabled" to='/about'>About</router-link >
-            <router-link   class="nav-item nav-link" to='upload_pdf_queue?name=default'>upload pdf queue</router-link >
-            <router-link   class="nav-item nav-link" to='/view_pdf_queue'>view pdf queue</router-link >
+            <!-- <router-link  v-if="loggedIn" class="nav-item nav-link" to='upload_pdf_queue?name=default'>upload pdf queue</router-link >
+            <router-link  v-if="loggedIn" class="nav-item nav-link" to='/view_pdf_queue'>view pdf queue</router-link > -->
 
 
-
-            <router-link v-if="!loggedIn" :to="{name:'login'}"  class="nav-item nav-link" >Login</router-link >
+            <router-link v-if="!loggedIn" :to="{name:'login'}"  class="nav-item nav-link " >Login</router-link >
             <router-link v-if="!loggedIn" :to="{name:'regester'}"  class="nav-item nav-link">Regester</router-link >
             <router-link v-if="loggedIn" :to="{name:'logout'}"  class="nav-item nav-link" >Logout</router-link >
             </div>

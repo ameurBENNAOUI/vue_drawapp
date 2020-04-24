@@ -4,6 +4,7 @@
         <div id="example-2">
         <!-- <p><i class="icon-camera-retro icon-large"></i> icon-camera-retro</p> -->
             <button type="button" id="refresh" class="btn btn-success" v-on:click="greet">Refresh</button>
+            <button type="button" id="refresh" class="btn btn-success" v-on:click="csv">csv</button>
 
         </div>
 <table class="table">
@@ -56,10 +57,15 @@ import axios from 'axios/dist/axios.min.js'
 import stringInject from 'stringinject'
 
 import 'bootstrap/dist/js/bootstrap.js'
+// import * as jsonexport from "jsonexport/dist"
 
 import bootbox from 'bootbox'
 export default {
     methods: {
+        csv:function(){
+            window.open( 
+              "http://localhost:8080/csv/1/0", "_blank"); 
+        },
         toImg:function(url){
             var res = url.replace(".pdf", ".jpg");
             return res

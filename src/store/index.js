@@ -34,6 +34,8 @@ export default new Vuex.Store({
     },
     retrieveToken(context, credentials) {
       const requestBody = {
+        grant_type: "password",
+
         username: credentials.username,
         password: credentials.password,
         

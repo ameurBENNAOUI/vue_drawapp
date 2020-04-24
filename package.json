@@ -19,6 +19,8 @@
     "font-awesome": "^4.7.0",
     "image-compressor": "^2.0.3",
     "jquery": "^3.5.0",
+    "json2xls": "^0.1.2",
+    "jsonexport": "^2.4.1",
     "popper.js": "^1.14.3",
     "stringinject": "^2.1.1",
     "vee-validate": "^3.3.0",

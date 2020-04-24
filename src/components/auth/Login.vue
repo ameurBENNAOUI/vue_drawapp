@@ -84,6 +84,8 @@ export default {
     padding: 0 26px 9px;
     border: 1px solid #c7bcbc;
     border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    perspective: 1000px;
 }
 .login-form i {
     font-size: 70px;
