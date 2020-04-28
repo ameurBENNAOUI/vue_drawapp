@@ -39,6 +39,9 @@ import data from '../assets/setting.json'
 import bootbox from 'bootbox'
 import 'bootstrap/dist/js/bootstrap.js'
 // import $ from "jquery"
+import store from '../store/index'
+
+axios.defaults.headers.common['Authorization'] = 'Bearer ' + store.getters.token
 
 
 export default {
@@ -72,13 +75,14 @@ export default {
     methods:{
         submit(){
             console.log("123")
-            this.data.label_json=this.extractcted_data;
+            this.data.label_json=JSON.stringify(this.extractcted_data);
+            this.data.crop_json=JSON.stringify(this.data.crop_json);
             this.data.label_status=true
 
             var header={
                 headers: { 'Content-Type': 'application/json' }
               }
-            axios.put('http://localhost:8080/template/1/'+this.data.id,this.data,header).then(function (response) {
+            axios.put('http://localhost:8080/template/'+this.data.id,this.data,header).then(function (response) {
                 console.log(response);
                 window.location.href ="/view_template";
                 
@@ -169,9 +173,10 @@ export default {
                 // console.log(response);
 
                 self.data=response.data;
-                self.img="http://localhost:8080/static/template_cropped_img_200/"+self.data.template_path
+                self.img="http://localhost:8080/static/template_cropped_img_300/"+self.data.template_path
                 console.log(self.data);
             })
+        
         
 
 

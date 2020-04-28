@@ -8,10 +8,10 @@
 
               </div>
               <div class="tools">
-                <button class="btn" v-on:click="zoom"><i class="fa fa-search-plus" aria-hidden="true"></i></button>
-                <button class="btn" v-on:click="unzoom"><i class="fa fa-search-minus" aria-hidden="true"></i></button>
-                <button class="btn" v-on:click="arraw"><i class="fa fa-arrows"></i></button>
-                <button class="btn" v-on:click="crop"><i class="fa fa-crop"></i></button>
+                <button class="btn1" v-on:click="zoom"><i class="fa fa-search-plus" aria-hidden="true"></i></button>
+                <button class="btn1" v-on:click="unzoom"><i class="fa fa-search-minus" aria-hidden="true"></i></button>
+                <button class="btn1" v-on:click="arraw"><i class="fa fa-arrows"></i></button>
+                <button class="btn1" v-on:click="crop"><i class="fa fa-crop"></i></button>
               </div>
         </div>
 
@@ -115,11 +115,11 @@ export default {
 .tools{
     position: absolute;
     top: 129px;
-    left: 16px;
+    left: 15px;
     display: flex;
     flex-direction: column;
 }
-.btn {
+.btn1 {
   background-color: DodgerBlue; 
   border: none; 
   color: white; 

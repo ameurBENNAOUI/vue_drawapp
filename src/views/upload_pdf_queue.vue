@@ -1,7 +1,7 @@
 <template>
 <div class="container a">
 
-        <div class="form-group">
+        <div class="form-group select-qu">
         <label for="sel1">Select Queue:</label>
         <select @change="active_ul()"  class="form-control" id="sel1">
             <option v-for="item in data_queue" :key="item.message"  selected>
@@ -26,6 +26,10 @@ import 'bootstrap/dist/js/bootstrap.js'
 import axios from 'axios/dist/axios.min.js'
 
 import bootbox from 'bootbox'
+import store from '../store'
+
+
+axios.defaults.headers.common['Authorization'] = 'Bearer ' + store.getters.token
 
 export default {
     name:"App",
@@ -48,13 +52,19 @@ export default {
                 title: "This is a prompt, vertically centered!", 
                 centerVertical: true,
                 callback: function(result){ 
+                    console.log("+++++++",result)
+                    if (result==null){
+                        location.reload();
+                    }else{
+
+                    
                     var header={
                     headers: { 'Content-Type': 'application/json' }
                   }
                   var obj={
                       name:result
                   }
-                    axios.post('http://localhost:8080/queue/1',obj,header).then(function (response) {
+                    axios.post('http://localhost:8080/queue/',obj,header).then(function (response) {
                     console.log(response);
                     
                     // location.reload();
@@ -65,6 +75,7 @@ export default {
                       })
                     console.log('This was logged in the callback: ' + result);
                     console.log(result); 
+                    }
                 }
             });
             }
@@ -95,7 +106,7 @@ export default {
  
     mounted(){
            var self= this
-        axios.get('http://localhost:8080/queue/1').then(function (response) {
+        axios.get('http://localhost:8080/queue/').then(function (response) {
         // console.log(response);
         // location.reload();
                 self.data_queue=response.data.Queues
@@ -124,7 +135,11 @@ export default {
 
 <style  scoped>
 
-
+.select-qu{
+    width: 667px;
+    margin: auto;
+    display: table;
+}
 
 
 </style>

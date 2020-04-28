@@ -19,7 +19,7 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/upload_template.vue")
+      import(/* webpackChunkName: "about" */ "../views/About.vue")
   },  
   {
     path: "/upload_template",
@@ -103,7 +103,17 @@ const routes = [
       requiresAuth: true,
       }
 
-  }
+  },
+  {
+    path: "/Dashboard",
+    name: "Dashboard",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/Dashboard"),
+    meta: {
+      requiresAuth: true,
+      }
+    }
+  
 ];
 
 const router = new VueRouter({

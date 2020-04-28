@@ -1,9 +1,9 @@
 <template>
   <div  id="app">
 
-
+    
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" ><span>Draw</span><small>App</small></a>
+        <a class="navbar-brand" href="#"><span>Draw</span><small>App</small></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -13,8 +13,8 @@
             <li class="nav-item active">
               <router-link class="nav-link" to='/'>Home <span class="sr-only">(current)</span></router-link >
             </li>
-            <li  v-if="loggedIn" class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Templates
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -22,8 +22,8 @@
                   <router-link class="dropdown-item" to='/view_template'>View Templates</router-link >
                 </div>
               </li>
-            <li  v-if="loggedIn" class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Outputs
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -36,23 +36,13 @@
             </li>
           </ul>
           <form class="form-inline my-2 my-lg-0 login-join">
-            <router-link  v-if="!loggedIn" :to="{name:'login'}" class="btn btn-outline-success my-2 my-sm-0 login" >Log in</router-link >
-            <router-link  v-if="!loggedIn" :to="{name:'regester'}" class="btn btn-outline-success my-2 my-sm-0 join" >Join</router-link >
-            <div class="logedin">
-            <li  v-if="loggedIn" class="nav-item dropdown list-unstyled ">
-                <a class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="fa fa-user-circle" aria-hidden="true"></i>
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <router-link class="dropdown-item" to='/Dashboard'>Dashboard</router-link >
-                  <router-link class="dropdown-item" to='/Logout'>Logout</router-link >
-                </div>
-            </li>
-            </div>
+            <button v-if="!loggedIn" :to="{name:'login'}" class="btn btn-outline-success my-2 my-sm-0 login" >Log in</button>
+            <button v-if="!loggedIn" :to="{name:'regester'}" class="btn btn-outline-success my-2 my-sm-0 join" >Join</button>
+            <button v-if="loggedIn" :to="{name:'logout'}" class="btn btn-outline-success my-2 my-sm-0 login" >Log out</button>
         </form>
         </div>
       </nav>
-      <router-view></router-view>
+      <router-view />
 
   </div>
 
@@ -61,9 +51,6 @@
 
 <script>
 // import "font-awesome/css/font-awesome.css"
-// import  "jquery/dist/jquery.js";
-import 'bootstrap/dist/js/bootstrap.js'
-import 'bootstrap/dist/css/bootstrap.css'
 
 export default {
   computed:{
@@ -100,15 +87,5 @@ a span{
 .login,.join {
     color: #fff;
 }
-nav{
-  margin-bottom:20px ;
-}
-.logedin .dropdown-menu{
-      margin-left: -116px;
-}
-.logedin i{
-    color: #fff;
-    font-size: 20px;
-    cursor: pointer;
-}
+
 </style>

@@ -52,6 +52,7 @@
           :multiple="true"
           :drop="true"
           :drop-directory="true"
+          :headers="{'Authorization': 'Bearer '+ token }"
           v-model="files"
           ref="upload">
           <i class="fa fa-plus"></i>
@@ -125,6 +126,8 @@
 
 <script>
 import FileUpload from 'vue-upload-component'
+import store from '../store'
+
 export default {
     name:"multi",
   components: {
@@ -133,7 +136,8 @@ export default {
   data() {
     return {
       files: [],
-      queue_id:null
+      queue_id:null,
+      token:store.getters.token
     }
   },
   methods:{

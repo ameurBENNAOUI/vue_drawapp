@@ -25,7 +25,7 @@
         <td>{{item.id}}</td>
         <td> <img :src="'http://localhost:8080/static/template_img_200/'+item.template_path" :name="item.template_path" :id="item.id" ref="img"  v-on:click="crop_popup('http://localhost:8080/static/template_img_200/',item)" alt=""> </td>
 
-        <td> <img :src="'http://localhost:8080/static/template_cropped_img_200/'+item.template_path" :name="item.template_path" :id="item.id" v-on:click="crop_popup('http://localhost:8080/static/template_cropped_img_200/',item)" ref="img"  alt=""> </td>
+        <td> <img :src="'http://localhost:8080/static/template_cropped_img_300/'+item.template_path" :name="item.template_path" :id="item.id" v-on:click="crop_popup('http://localhost:8080/static/template_cropped_img_300/',item)" ref="img"  alt=""> </td>
 
         <td>{{item.name}} </td>
         <td>{{item.status_crop}}</td>
@@ -98,6 +98,9 @@ import 'axios/dist/axios.min.js'
 import axios from 'axios/dist/axios.min.js'
 // import 'bootbox/dist/bootbox.min.js'
 import bootbox from 'bootbox'
+import store from '../store'
+
+axios.defaults.headers.common['Authorization'] = 'Bearer ' + store.getters.token
 
 // import Vue from "vue";
 
@@ -256,7 +259,7 @@ document.getElementById("save1").value = '';
             var header={
                 headers: { 'Content-Type': 'application/json' }
               }
-            axios.put('http://localhost:8080/template/1/2',obj,header).then(function (response) {
+            axios.put('http://localhost:8080/template/'+obj.id,obj,header).then(function (response) {
                 console.log(response);
                 $('#exampleModalCenter').modal('toggle');
                 location.reload();

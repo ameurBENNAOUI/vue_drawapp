@@ -2,6 +2,9 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
+// import axios from 'axios/dist/axios.min.js'
+// axios.defaults.headers.common['Authorization'] = 'Bearer ' + $store.getters.token
+
 
 // import VeeValidate from 'vee-validate'
 // import CxltToastr from 'cxlt-vue2-toastr'

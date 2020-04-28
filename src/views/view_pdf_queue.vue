@@ -41,6 +41,7 @@
         <td><button type="button" class="btn btn-danger" v-on:click="Delete(item.id)">Delete</button></td>
 
 
+
       </tr>
 
     </tbody>
@@ -60,11 +61,52 @@ import 'bootstrap/dist/js/bootstrap.js'
 // import * as jsonexport from "jsonexport/dist"
 
 import bootbox from 'bootbox'
+import store from '../store'
+// import $ from 'jquery'
+axios.defaults.headers.common['Authorization'] = 'Bearer ' + store.getters.token
+
 export default {
     methods: {
         csv:function(){
-            window.open( 
-              "http://localhost:8080/csv/1/0", "_blank"); 
+                const method = 'GET';
+
+    const url = "http://localhost:8080/csv/0";
+
+
+    axios.request({
+        url,
+        method,
+        responseType: 'blob', //important
+      }).then(({ data }) => {
+        const downloadUrl = window.URL.createObjectURL(new Blob([data]));
+        const link = document.createElement('a');
+        link.href = downloadUrl;
+        link.setAttribute('download', 'file.xlsx'); //any other extension
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+      });
+
+//   };
+
+
+            // window.open( 
+            //   "http://localhost:8080/csv/0", "_blank");
+              
+            // $.ajax({
+            // type: "GET",
+            // url: "http://localhost:8080/csv/0",
+            // headers: {'Authorization' :'Bearer ' + store.getters.token},
+            // success: function(response)
+            // {
+            //     // alert('got response');
+            //     window.location (response, "_blank");
+            // },
+            // error: function () 
+            // {
+            //     alert('Error occurred while opening fax template');
+            // }
+        // });
         },
         toImg:function(url){
             var res = url.replace(".pdf", ".jpg");
@@ -74,7 +116,7 @@ export default {
         Delete:function(id){
 
           bootbox.confirm({
-                message: '<img src="/logo.png" alt="/logo.png" height="42" width="42">',
+                message: '<img src="/logo.png" alt="/logo.png" height="250" width="200">',
                 buttons: {
                     confirm: {
                         label: 'Yes',
@@ -93,7 +135,7 @@ export default {
                 var header={
                     headers: { 'Content-Type': 'application/json' }
                   }
-                    axios.delete('http://localhost:8080/ProccessQueue//1/'+id,header).then(function (response) {
+                    axios.delete('http://localhost:8080/ProccessQueue//'+id,header).then(function (response) {
                     console.log(response);
                     location.reload();
                 
@@ -129,8 +171,8 @@ export default {
             // toimg= url.replace(".pdf", ".jpg");
             // var a=document.getElementById(item).innerHTML
             // var b="fff"
-            var str = stringInject('<p>{element}</p><br><img src="http://localhost:8080/static/queues_pdf_cropped/{name}" alt="/logo.png" height="42" width="42">', { element: el, name: e});
-            var put_url=stringInject('http://localhost:8080/ProccessQueue/1/{queue_id}/{pdf_id}',{ queue_id: item.queue_id, pdf_id: item.id})
+            var str = stringInject('<p>{element}</p><br><img src="http://localhost:8080/static/queues_pdf_cropped/{name}" alt="/logo.png" height="250" width="200">', { element: el, name: e});
+            var put_url=stringInject('http://localhost:8080/ProccessQueue/{queue_id}/{pdf_id}',{ queue_id: item.queue_id, pdf_id: item.id})
             bootbox.dialog({
             title: "str",
             message: str,
@@ -205,7 +247,7 @@ export default {
     },
     mounted (){
         var self=this
-        axios.get('http://localhost:8080/ProccessQueue/1/0')
+        axios.get('http://localhost:8080/ProccessQueue/0')
         .then((response) => {
         console.log(response);
         self.json_data=response.data.Queues;

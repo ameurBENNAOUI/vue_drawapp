@@ -40,7 +40,11 @@
 <script>
 // import VeeValidate from 'vee-validate'
 // import CxltToastr from 'cxlt-vue2-toastr'
+
 import axios from 'axios'
+import store from '../../store'
+
+axios.defaults.headers.common['Authorization'] = 'Bearer ' + store.getters.token
 
 
 export default {

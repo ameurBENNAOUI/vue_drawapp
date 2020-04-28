@@ -17,6 +17,10 @@
 // import ImageCropper from "@/components/img_copy";
 import ImageCropper from './img_ copy'
 import axios from 'axios/dist/axios.min.js'
+import store from '../store'
+
+
+axios.defaults.headers.common['Authorization'] = 'Bearer ' + store.getters.token
 
 import data1 from '../assets/setting.json';
 
@@ -51,7 +55,7 @@ export default {
             var header={
                 headers: { 'Content-Type': 'application/json' }
               }
-            axios.put('http://localhost:8080/template/1/2',obj,header).then(function (response) {
+            axios.put('http://localhost:8080/template/'+this.data.id,obj,header).then(function (response) {
                 console.log(response);
                 window.location.href ="";
                 

@@ -51,6 +51,8 @@
           post-action="http://localhost:8080/upload_queue_file/"
           :multiple="true"
           :drop="true"
+          :headers="{'Authorization': 'Bearer '+ token }"
+
           :drop-directory="true"
           v-model="files"
           :data="{queue_id: queue_id}"
@@ -126,6 +128,8 @@
 
 <script>
 import FileUpload from 'vue-upload-component'
+import store from '../store'
+
 export default {
     name:"multi",
   components: {
@@ -134,7 +138,8 @@ export default {
   data() {
     return {
       files: [],
-      queue_id:null
+      queue_id:null,
+      token:store.getters.token
     }
   },
   methods:{

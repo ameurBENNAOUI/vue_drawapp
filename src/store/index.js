@@ -100,7 +100,29 @@ export default new Vuex.Store({
     },
     getters: {
       loggedIn(state) {
+        // axios.defaults.headers.common['Authorization'] = 'Bearer ' + state.token
+
+        // var s
+        // new Promise((resolve) => {
+        //   axios.get('http://localhost:8080/users/me/')
+        //   .then((response) => {
+        //     s=true
+
+        //     resolve(response)
+   
+        //   }, () => {
+        //     // reject(s=false)
+        //   });
+        // })
+
+           
+        
+        // // s=true
+        // return s
         return state.token !== null
+      },
+      token(state) {
+        return state.token
       }},
     
   modules: {}
