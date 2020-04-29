@@ -4,7 +4,7 @@
         <div id="example-2">
         <!-- <p><i class="icon-camera-retro icon-large"></i> icon-camera-retro</p> -->
             <button type="button" id="refresh" class="btn btn-success" v-on:click="greet">Refresh</button>
-            <button type="button" id="refresh" class="btn btn-success" v-on:click="csv">csv</button>
+            <button type="button" id="refresh" class="btn btn-success" v-on:click="csv">export XLS</button>
 
         </div>
 <table class="table">
@@ -171,6 +171,7 @@ export default {
             // toimg= url.replace(".pdf", ".jpg");
             // var a=document.getElementById(item).innerHTML
             // var b="fff"
+            // bootbox.dialog.init
             var str = stringInject('<p>{element}</p><br><img src="http://localhost:8080/static/queues_pdf_cropped/{name}" alt="/logo.png" height="250" width="200">', { element: el, name: e});
             var put_url=stringInject('http://localhost:8080/ProccessQueue/{queue_id}/{pdf_id}',{ queue_id: item.queue_id, pdf_id: item.id})
             bootbox.dialog({
@@ -258,3 +259,12 @@ export default {
 }
 </script>
 
+<style  scoped>
+.bootbox-body{
+    display: flex;
+    justify-content: space-around;
+}
+p{
+    margin-right: 92px;
+}
+</style>

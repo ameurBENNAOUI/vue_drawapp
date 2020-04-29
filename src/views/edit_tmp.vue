@@ -35,7 +35,7 @@
 import ImageCropper from "../components/cropper_container"
 // import GetLabels from "../components/edit_template_button"
 import axios from 'axios/dist/axios.min.js'
-import data from '../assets/setting.json'
+import data1 from '../assets/setting.json'
 import bootbox from 'bootbox'
 import 'bootstrap/dist/js/bootstrap.js'
 // import $ from "jquery"
@@ -98,7 +98,7 @@ export default {
         delete_data(se){
           var self =this
           bootbox.confirm({
-                message: "This is a confirm with custom button text and color! Do you like it?",
+                message: "Want to delete?",
                 buttons: {
                     confirm: {
                         label: 'Yes',
@@ -163,10 +163,11 @@ export default {
               
           }
     },
+    
     mounted(){
         // console.log(this.$route.params.id)
         // var a;
-        this.set=data.buttons;
+        this.set=data1.buttons;
 
         var self = this;
         axios.get('http://localhost:8080/template/'+this.$route.params.id).then(function (response) {
@@ -175,7 +176,31 @@ export default {
                 self.data=response.data;
                 self.img="http://localhost:8080/static/template_cropped_img_300/"+self.data.template_path
                 console.log(self.data);
+
+                
+        var btn,icon,view
+        console.log("....",self.data.label_json)
+        if (self.data.label_json){
+            self.set.forEach(se => {
+                btn =document.getElementById(se)
+                icon =document.getElementById(se+'_icon')
+                view =document.getElementById(se+'_view')
+
+        
+                self.extractcted_data[se]=self.data.label_json[se]
+
+                btn.setAttribute("class","extract-green")
+                
+                icon.style.display = "block";
+                view.style.display = "block";
+                
+            });
+                
+
+        }
+                
             })
+
         
         
 
