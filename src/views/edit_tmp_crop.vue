@@ -88,7 +88,7 @@ export default {
             var header={
                 headers: { 'Content-Type': 'application/json' }
               }
-            axios.put('http://localhost:8080/template/'+obj.id,obj,header).then(function (response) {
+            axios.put('http://13.90.171.117:8080/template/'+obj.id,obj,header).then(function (response) {
                 console.log(response);
                 window.location.href ="/view_template";
                 
@@ -105,7 +105,7 @@ export default {
     
     mounted(){
 
-      this.img_src='http://localhost:8080/static/template_img_200/'+this.$route.params.template_path;
+      this.img_src='http://13.90.171.117:8080/static/template_img_200/'+this.$route.params.template_path;
 
 
     }

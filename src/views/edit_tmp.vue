@@ -82,7 +82,7 @@ export default {
             var header={
                 headers: { 'Content-Type': 'application/json' }
               }
-            axios.put('http://localhost:8080/template/'+this.data.id,this.data,header).then(function (response) {
+            axios.put('http://13.90.171.117:8080/template/'+this.data.id,this.data,header).then(function (response) {
                 console.log(response);
                 window.location.href ="/view_template";
                 
@@ -170,11 +170,11 @@ export default {
         this.set=data1.buttons;
 
         var self = this;
-        axios.get('http://localhost:8080/template/'+this.$route.params.id).then(function (response) {
+        axios.get('http://13.90.171.117:8080/template/'+this.$route.params.id).then(function (response) {
                 // console.log(response);
 
                 self.data=response.data;
-                self.img="http://localhost:8080/static/template_cropped_img_300/"+self.data.template_path
+                self.img="http://13.90.171.117:8080/static/template_cropped_img_300/"+self.data.template_path
                 console.log(self.data);
 
                 

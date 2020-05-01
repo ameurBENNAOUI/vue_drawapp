@@ -23,9 +23,9 @@
     <tbody>
       <tr  v-for="item in json_data" :key="item.message" v-bind:class="classObject(item)" >
         <td>{{item.id}}</td>
-        <td> <img :src="'http://localhost:8080/static/template_img_200/'+item.template_path" :name="item.template_path" :id="item.id" ref="img"  v-on:click="crop_popup('http://localhost:8080/static/template_img_200/',item)" alt=""> </td>
+        <td> <img :src="'http://13.90.171.117:8080/static/template_img_200/'+item.template_path" :name="item.template_path" :id="item.id" ref="img"  v-on:click="crop_popup('http://13.90.171.117:8080/static/template_img_200/',item)" alt=""> </td>
 
-        <td> <img :src="'http://localhost:8080/static/template_cropped_img_300/'+item.template_path" :name="item.template_path" :id="item.id" v-on:click="crop_popup('http://localhost:8080/static/template_cropped_img_300/',item)" ref="img"  alt=""> </td>
+        <td> <img :src="'http://13.90.171.117:8080/static/template_cropped_img_300/'+item.template_path" :name="item.template_path" :id="item.id" v-on:click="crop_popup('http://13.90.171.117:8080/static/template_cropped_img_300/',item)" ref="img"  alt=""> </td>
 
         <td>{{item.name}} </td>
         <td>{{item.status_crop}}</td>
@@ -125,7 +125,7 @@ export default {
     }},
     mounted() {
 
-        axios.get('http://localhost:8080/template')
+        axios.get('http://13.90.171.117:8080/template')
         .then((response) => {
         console.log(response);
         this.json_data=response.data.templates;
@@ -164,7 +164,7 @@ export default {
                 var header={
                     headers: { 'Content-Type': 'application/json' }
                   }
-                    axios.delete('http://localhost:8080/template/'+id,header).then(function (response) {
+                    axios.delete('http://13.90.171.117:8080/template/'+id,header).then(function (response) {
                     console.log(response);
                     location.reload();
                 
@@ -250,7 +250,7 @@ export default {
             var header={
                 headers: { 'Content-Type': 'application/json' }
               }
-            axios.put('http://localhost:8080/template/'+obj.id,obj,header).then(function (response) {
+            axios.put('http://13.90.171.117:8080/template/'+obj.id,obj,header).then(function (response) {
                 console.log(response);
                 $('#exampleModalCenter').modal('toggle');
                 location.reload();
@@ -266,7 +266,7 @@ export default {
         },
         greet: function () {
         // `this` inside methods points to the Vue instance
-        // axios.get('http://localhost:8080/template' )
+        // axios.get('http://13.90.171.117:8080/template' )
         // .then((response) => {
         // this.json_data=response.data.templates;
         // console.log(response);

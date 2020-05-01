@@ -48,7 +48,7 @@
       <div class="example-btn text-center">
         <file-upload
           class="btn btn-primary"
-          post-action="http://localhost:8080/upload_queue_file/"
+          post-action="http://13.90.171.117:8080/upload_queue_file/"
           :multiple="true"
           :drop="true"
           :headers="{'Authorization': 'Bearer '+ token }"

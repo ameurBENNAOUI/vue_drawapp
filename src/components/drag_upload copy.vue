@@ -48,7 +48,7 @@
       <div class="example-btn text-center">
         <file-upload
           class="btn btn-primary"
-          post-action="http://localhost:8080/uploadfile/"
+          post-action="http://13.90.171.117:8080/uploadfile/"
           :multiple="true"
           :drop="true"
           :drop-directory="true"

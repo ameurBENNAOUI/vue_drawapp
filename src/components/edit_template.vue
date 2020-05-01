@@ -55,7 +55,7 @@ export default {
             var header={
                 headers: { 'Content-Type': 'application/json' }
               }
-            axios.put('http://localhost:8080/template/'+this.data.id,obj,header).then(function (response) {
+            axios.put('http://13.90.171.117:8080/template/'+this.data.id,obj,header).then(function (response) {
                 console.log(response);
                 window.location.href ="";
                 
@@ -98,11 +98,11 @@ export default {
         var id=this.a.substring(this.a.lastIndexOf("/") + 1, this.a.length);
         this.a=id
     
-        axios.get('http://localhost:8080/template/'+id)
+        axios.get('http://13.90.171.117:8080/template/'+id)
         .then((response) => {
         console.log(response);
         this.data=response.data;
-        this.img_src='http://localhost:8080/static/template_cropped_img_200/'+response.data.template_path;
+        this.img_src='http://13.90.171.117:8080/static/template_cropped_img_200/'+response.data.template_path;
         }, (error) => {
         console.log(error);
         });

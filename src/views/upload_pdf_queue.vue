@@ -64,7 +64,7 @@ export default {
                   var obj={
                       name:result
                   }
-                    axios.post('http://localhost:8080/queue/',obj,header).then(function (response) {
+                    axios.post('http://13.90.171.117:8080/queue/',obj,header).then(function (response) {
                     console.log(response);
                     
                     // location.reload();
@@ -106,7 +106,7 @@ export default {
  
     mounted(){
            var self= this
-        axios.get('http://localhost:8080/queue/').then(function (response) {
+        axios.get('http://13.90.171.117:8080/queue/').then(function (response) {
         // console.log(response);
         // location.reload();
                 self.data_queue=response.data.Queues

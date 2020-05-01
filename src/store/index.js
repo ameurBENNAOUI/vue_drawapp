@@ -46,7 +46,7 @@ export default new Vuex.Store({
         }
       }
       return new Promise((resolve, reject) => {
-        axios.post('http://localhost:8080/token', qs.stringify(requestBody), config)
+        axios.post('http://13.90.171.117:8080/token', qs.stringify(requestBody), config)
           .then(response => {
             const token = response.data.access_token
 
@@ -79,7 +79,7 @@ export default new Vuex.Store({
     ,
     register(context, data) {
       return new Promise((resolve, reject) => {
-        axios.post('http://localhost:8080/users/', {
+        axios.post('http://13.90.171.117:8080/users/', {
           name: data.name,
           email: data.email,
           password: data.password,
@@ -104,7 +104,7 @@ export default new Vuex.Store({
 
         // var s
         // new Promise((resolve) => {
-        //   axios.get('http://localhost:8080/users/me/')
+        //   axios.get('http://13.90.171.117:8080/users/me/')
         //   .then((response) => {
         //     s=true
 

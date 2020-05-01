@@ -75,7 +75,7 @@ export default {
       // const qs = require('querystring')
 
       return new Promise((resolve, reject) => {
-        axios.post('http://localhost:8080/users/',requestBody)
+        axios.post('http://13.90.171.117:8080/users/',requestBody)
           .then(response => {
             resolve(response)
             this.$router.push({ name: 'login' })
