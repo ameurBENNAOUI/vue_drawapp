@@ -30,7 +30,7 @@
         <td>{{item.name}} </td>
         <td>{{item.status_crop}}</td>
 
-        <td><button type="button" class="btn btn-light" data-toggle="modal" v-on:click="modale(item.template_path)" >Edit</button></td>
+        <td><button type="button" class="btn btn-light" data-toggle="modal" v-on:click="modale(item)" >Edit</button></td>
         <td>{{item.label_status}}</td>
         <td><button type="button" class="btn btn-light"  v-on:click="gotosite(item.id)">Edit</button></td>
         <td><button type="button" class="btn btn-danger" v-on:click="Delete(item.id)">Delete</button></td>
@@ -145,7 +145,7 @@ export default {
          Delete:function(id){
 
           bootbox.confirm({
-                message: "This is a confirm with custom button text and color! Do you like it?",
+                message: "You want delete template ?",
                 buttons: {
                     confirm: {
                         label: 'Yes',
@@ -236,15 +236,6 @@ export default {
             console.log("vvvvvvvvv",res);
             coordination.rotate=rotate;
 
-document.getElementById("save1").value = '';
-            document.getElementById("spin_parent").setAttribute("class","spinner-border text-secondary");
-            document.getElementById("spin_child").setAttribute("class","sr-only");
-
-          document.getElementById("save1").disabled = true;
-          document.getElementById("close").disabled = true;
-          document.getElementById("save1").innerHTML=""
-          
-          // document.getElementById("close").value = '';
 
             var obj={
                 "id":img_id,
@@ -292,29 +283,14 @@ document.getElementById("save1").value = '';
         // }
         },
         modale:function(event){
-            
-            // var element = event.target.parentElement
-            
-            // element=element
-            // var img =element.getElementById("img").setAttribute("class", "democlass");
+              var a="/edit_tmp_crop";
 
-            this.img_src='http://localhost:8080/static/template_img_200/'+event;
+              var img_id=event.id;
+              var template_path=event.template_path;
+              // password=1234;
+              window.open(a+'/'+img_id+'/'+template_path,'_self');
 
-            $("#exampleModalCenter").modal()
-            
-
-            // B.data().settings
-            // console.log("aaa : ",ImageCropper.data().get_data);
-            
-            
-
-            // this.$refs.ImageCropper.src = this.img_src
-
-            // console.log(this.$attrs("class")); // Output : Select span|i|a element
-
-            // href = element.getAttribute('class');
-
-            // console.log(event);
+              // this.img_src='/edit_tmp_crop/'+event.template_path;
 
             
 

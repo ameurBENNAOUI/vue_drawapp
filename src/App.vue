@@ -24,7 +24,7 @@
               </li>
             <li  v-if="loggedIn" class="nav-item dropdown">
               <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Outputs
+                Extract Info
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <router-link class="dropdown-item" to='upload_pdf_queue?name=default'>upload pdf queue</router-link >
@@ -88,7 +88,7 @@ body{
     text-decoration: none;
     border-radius: 5%;
     font-weight: bold;
-    color: #34495e;
+    color: #cdd6df;
 }
 a span{
     color: #ff4747;

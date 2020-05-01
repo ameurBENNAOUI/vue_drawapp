@@ -4,7 +4,7 @@
         <div id="example-2">
         <!-- <p><i class="icon-camera-retro icon-large"></i> icon-camera-retro</p> -->
             <button type="button" id="refresh" class="btn btn-success" v-on:click="greet">Refresh</button>
-            <button type="button" id="refresh" class="btn btn-success" v-on:click="csv">export XLS</button>
+            <button type="button" id="refresh" class="btn btn-primary" v-on:click="csv">export XLS</button>
 
         </div>
 <table class="table">
@@ -116,7 +116,7 @@ export default {
         Delete:function(id){
 
           bootbox.confirm({
-                message: '<img src="/logo.png" alt="/logo.png" height="250" width="200">',
+                message: 'You want delete ?',
                 buttons: {
                     confirm: {
                         label: 'Yes',
