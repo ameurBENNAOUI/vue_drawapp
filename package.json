@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@xkeshi/image-compressor": "^0.5.3",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "blueimp-file-upload": "^10.13.0",
     "bootbox": "^5.4.0",
     "bootstrap": "^4.4.1",
